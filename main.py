@@ -1,6 +1,5 @@
 from moviepy import VideoFileClip
 
-
 def extract_audio() -> str:
     video_path = './input/input.webm'
     video = VideoFileClip(video_path)
