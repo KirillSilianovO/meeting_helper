@@ -1,13 +1,18 @@
-import whisper
-# from pyannote.audio import Pipeline
+from moviepy import VideoFileClip
 
-def recognize_audio(audio_path):
-    model = whisper.load_model("large")
-    result = model.transcribe(audio_path, language="ru")
-    result = result["text"]
-    return result
+
+def extract_audio() -> str:
+    video_path = './input/input.webm'
+    video = VideoFileClip(video_path)
+    audio = video.audio
+    audio_path = './output/audio/audio.mp3'
+    audio.write_audiofile(audio_path)
+    return audio_path
+
+
+def run():
+    extract_audio()
+
 
 if __name__ == "__main__":
-    audio_path = "1.wav"
-    text = recognize_audio(audio_path)
-    print(text)
+    run()
